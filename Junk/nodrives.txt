@@ -1,0 +1,10 @@
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\policies\Explorer
+New DWORD="NoDrives"
+
+Value:
+11111111111111111111111111
+ZYXWVUTSRQPONMLKJIHGFEDCBA
+
+Convert to decimal.
+
+This configuration corresponds to 67108863 in decimal and hides all drives. If you want to hide drive C, make the third-lowest bit a 1, and then convert the binary string to decimal. 

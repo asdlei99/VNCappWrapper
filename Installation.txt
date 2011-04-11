@@ -1,0 +1,14 @@
+VNCappWrapper
+"""""""""""""
+
+This software essentially turns a Windows installation into a remote single-program server. Clients log on to the server using VNCviewer, use the program you have designated (and only that program) and then they quit. It allows a single application to be shared to many users, but only one concurrently. Why might this be useful? For sharing programs over a network that usually require a single-computer installation.
+
+First you need to install Windows, and create an account for administration and an account for the program. It is easiest to call this second account Kiosk, and make sure it does not have admin rights.
+
+Copy the VNCappWrapper program files to the desktop of the Kiosk user. All files should be in: "C:\Documents and Settings\Kiosk\Desktop\VNCappWrapper"
+
+Then, from the admin account merge disable_windows_keys.reg into the registry. This disables the windows key shortcuts. If required edit the ultravnc.ini file in "C:\Documents and Settings\Kiosk\Desktop\VNCappWrapper" and set "path" to "C:\Documents and Settings\Kiosk\Desktop\VNCappWrapper". Now run winvnc.exe. Kill the process in task manager immediately afterwards.
+
+Now log in to the Kiosk user account, and merge the "EnableVNCappWrapper.reg" file into the registry. This disables the task manager and replaces the Windows shell with VNCappWrapper. Run winvnc.exe and set the options to your new password, refuse new connections, disable file transfer and disable the Java viewer. You should be ready to go. Run VNCappWrapper.exe to make sure it works and to allow any firewalling prompts. Now log off and log back in the Kiosk user. If all goes well VNCappWrapper should be run on startup, with Windows Explorer not run at all. You can try out connecting to the VNC server from a client machine. Ideally you should be able to use the program, but no more than that. You will probably need to manage the rights on the Windows machine so that the Kiosk user cannot access other drives.
+
+If you need to log in to the Kiosk account for some reason, press Ctrl-Alt-End and enter the password (by default it is administrator). This will quit the program and open up Windows Explorer.
